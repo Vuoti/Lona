@@ -29,7 +29,7 @@ html {
 }
 
 div {
-  background-image: url("../lona.png");
+  background-image: url("../img/lona.png");
   background-position: top;
   /* Center the image */
   margin-top: 250px;

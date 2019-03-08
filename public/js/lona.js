@@ -19,6 +19,8 @@ function setup() {
 
   // Create the Input field
   input = createInput().attribute('placeholder', 'Dein Name');
+  input.attribute('type', 'text');
+  input.attribute('pattern', '[A-Za-z]');
   input.position(window.innerWidth / 2 - input.size().width / 2, window.innerHeight / 2);
   document.getElementsByTagName("input").placeholder = "Dein Name";
 

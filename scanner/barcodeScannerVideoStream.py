@@ -14,8 +14,10 @@
 
 from imutils.video import VideoStream # Used to get the PiCamera video stream
 from pyzbar import pyzbar # Barcode recognition library
+from datetime import date
 import os, subprocess, imutils, time
 
+today = str(date.today())[2:4] + str(date.today())[5:7] + str(date.today())[8:10]
 startTime = time.time()
 intervallTimeScan = 15.0
 barcodeDetected = False
@@ -42,11 +44,11 @@ while not barcodeDetected:
 		barcodeData = barcode.data.decode("utf-8") # the barcode data is a bytes object, so we need to convert it to a string
 		print("Barcode detected: " + barcodeData)
 
-		if (os.path.isfile('public/uploads/' + barcodeData + '.wav')):
+		if (os.path.isfile('public/uploads/' + today + '/' + barcodeData + '.wav')):
 			#subprocess.call(["sudo", "python", "ledGreen.py"]) # # PMW conflict with audio, LED is currently not supported
 			print("Playing back the audio file")
 			subprocess.call(['omxplayer', '-o', 'local', 'scanner/soundFx/success.mp3'], stdout=FNULL, stderr=subprocess.STDOUT)
-			subprocess.call(["omxplayer", "-o", "local", "public/uploads/" + barcodeData + ".wav"], stdout=FNULL, stderr=subprocess.STDOUT)
+			subprocess.call(["omxplayer", "-o", "local", "public/uploads/" + today + '/' + barcodeData + ".wav"], stdout=FNULL, stderr=subprocess.STDOUT)
 		else:
 			print("No matching audio file could be found")
 			subprocess.call(['omxplayer', '-o', 'local', 'scanner/soundFx/fail.mp3'], stdout=FNULL, stderr=subprocess.STDOUT)

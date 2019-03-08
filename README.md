@@ -3,10 +3,11 @@
 *Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.*
 
 Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botschaften helfen soll wieder stärker am gesellschaftlichen Leben teilzunehmen. Seine Aufgabe ist es, Menschen die sich einsam fühlen, einen Weg aus der sozialen Isolation und Antriebslosigkeit zu zeigen. Zudem wird das Pflegen bestehender Beziehungen, u.a. durch Sprachnachrichten erleichtert.
-[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/user87120202)
 
 ## Funktionsumfang des Prototypen
 Über eine Webseite können im Browser Sprachnachrichten von externen Geräten (zum Beispiel dem eigenen Smartphone) aufgenommen werden. Die Soundfiles werden auf dem Prototypen gespeichert und eine entsprechende Nachricht mit dem Namen des Senders, dem Datum, der Uhrzeit, sowie der Länge der Nachricht ausgedruckt. Der Ausdruck beinhaltet zudem einen Strichcode der, nach betätigen des Drucktasters, mit der angeschlossenen Kamera ausgelesen werden kann. Wurde der Strichcode erkannt wird die entsprechende Sprachnachricht wiedergegeben.
+
+[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/322329726s)
 
 ## Aufbau
 Der Prototyp setzt sich aus den folgenden Komponenten zusammen

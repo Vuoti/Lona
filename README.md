@@ -1,6 +1,6 @@
 # ![Lona](public/img/lona.png "Lona Logo")
-*Ein Bachelorprojekt von André Fritzinger und Jeannine Krämer im WS18/19.
-Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.***
+*Ein Bachelorprojekt von André Fritzinger und Jeannine Krämer im WS18/19.*
+*Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.*
 
 Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botschaften helfen soll wieder stärker am gesellschaftlichen Leben teilzunehmen. Seine Aufgabe ist es, Menschen die sich einsam fühlen, einen Weg aus der sozialen Isolation und Antriebslosigkeit zu zeigen. Zudem wird das Pflegen bestehender Beziehungen, u.a. durch Sprachnachrichten erleichtert.
 [![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/user87120202)
@@ -97,7 +97,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \ -D CMAKE_INSTALL_PREFIX=/usr/local \ -D INST
 sudo make install && sudo ldconfig
 ```
 
-## Nutzung
+## Inbetriebnahme
 
 ### 1. Über ssh mit dem Pi verbinden
 Login: ```pi``` ```raspberry```

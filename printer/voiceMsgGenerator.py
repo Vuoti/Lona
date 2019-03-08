@@ -79,9 +79,9 @@ image.rotate(180).save(filePath)
 printer.upsideDownOn()
 printer.justify('C')
 printer.setBarcodeHeight(100)
-#printer.printBarcode(barcode, printer.CODE128)
-#printer.feed(3)
+printer.printBarcode(barcode, printer.CODE128)
+printer.feed(3)
 
 # Load the generated image and print it
-#printer.printImage(Image.open(filePath), True)
-#printer.feed(6)
+printer.printImage(Image.open(filePath), True)
+printer.feed(6)

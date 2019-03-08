@@ -5,6 +5,7 @@ Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.***
 ![alt text](public/img/lona.png "Lona Logo")
 
 Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botschaften helfen soll wieder stärker am gesellschaftlichen Leben teilzunehmen. Seine Aufgabe ist es, Menschen die sich einsam fühlen, einen Weg aus der sozialen Isolation und Antriebslosigkeit zu zeigen. Zudem wird das Pflegen bestehender Beziehungen, u.a. durch Sprachnachrichten erleichtert.
+[![alt text](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/user87120202)
 
 ## Funktionsumfang des Prototypen
 Über eine Webseite können im Browser Sprachnachrichten von externen Geräten (zum Beispiel dem eigenen Smartphone) aufgenommen werden. Die Soundfiles werden auf dem Prototypen gespeichert und eine entsprechende Nachricht mit dem Namen des Senders, dem Datum, der Uhrzeit, sowie der Länge der Nachricht ausgedruckt. Der Ausdruck beinhaltet zudem einen Strichcode der, nach betätigen des Drucktasters, mit der angeschlossenen Kamera ausgelesen werden kann. Wurde der Strichcode erkannt wird die entsprechende Sprachnachricht wiedergegeben.
@@ -133,13 +134,14 @@ Ausdrucke, z.B. zur Demonstration der morgendlichen Botschaften können mit folg
 ```
 lpr -o orientation-requested=3 -o fit-to-page PFAD_ZUM_BILD
 ```
+![alt text](public/img/printout.gif "Demo Printer")
 
 ### Barcodescan mit Bildoutput (OpenCV erforderlich)
 Zu Debugging-Zwecken kann es nützlich sein zu sehen ab wann ein Barcode erkannt wird:
 ```
 python3 scanner/barcodeScannerVideoStream_VideoOutput.py
 ```
-
+![alt text](public/img/barcodeScanner.gif "Demo Barcode Scanner")
 
 
 ## To-Do

@@ -38,7 +38,7 @@ while not barcodeDetected:
 	# find barcodes in the frame and decode them
 	barcodes = pyzbar.decode(frame)
 	for barcode in barcodes:
-		barcodeDetected = True # Found a barcode
+		barcodeDetected = True # Found a barcode, so we can stop scanning
 		barcodeData = barcode.data.decode("utf-8") # the barcode data is a bytes object, so we need to convert it to a string
 		print("Barcode detected: " + barcodeData)
 

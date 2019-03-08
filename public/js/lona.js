@@ -1,3 +1,21 @@
+// ****************************************************************************
+// This node script records voice messages and sends them with its creators
+// name to the server via HTTP POST request.
+
+// ! The microphone recording is only possible with an https connection due
+// to safety restrictions of modern browsers. Therefore Ngrok has to be running
+// on the same port as the server.
+//
+// Written by Andre Fritzinger
+//
+// ****************************************************************************
+// To-Do:
+// - There is a bug with the http-posts, sometimes they get send multiple times
+// - Validation of the input form is broken (allow only characters A-Z, a-z)
+// - The check if the recording button is pressed is not precise
+// - Website is not responsive (Elements are on top of each other on desktop)
+// - Add profile picture upload
+
 let button, mic, soundRec, soundFile, time, input;
 var isRecording = false;
 var btnSize = 500;
@@ -5,7 +23,7 @@ var btnSize = 500;
 function setup() {
 
   mic = new p5.AudioIn(); // Create an audio input
-  mic.start(); // ! Users must manually enable their browser microphone
+  mic.start(); // ! Users must manually enable their browser microphone (https connections only)
 
   soundRec = new p5.SoundRecorder(); // Create a sound recorder
   soundRec.setInput(mic) // Connect the microphone to the recorder
@@ -35,48 +53,49 @@ function keyReleased() {
   }
 }
 
-// Enable the Recording button only if the inputfield (name) got filled in
+// Start recording when the button is pressed
 function mousePressed() {
-  console.log("Mouse X: " + mouseX)
-  console.log("Button X: " + button.position().x)
-  console.log(dist(mouseX, mouseY, button.position().x, button.position().y + btnSize / 2));
   if (((dist(mouseX, mouseY, button.position().x, button.position().y + btnSize / 2)) < btnSize / 2) && (input.value() != '')) {
-    isRecording = true;
     document.querySelector("button").classList.add('button--active');
 
-    time = getTime();
+    // set up the soundfile to record and start recording
     getAudioContext().resume();
+    soundRec.record(soundFile);
     console.log("recording....");
-    soundRec.record(soundFile); // set up the soundfile to record and start recording
+
+    time = getTime(); // Get the current time, will be used as filename
+    isRecording = true;
   }
 }
 
+// If the button is released, end the recording and send the soundfile and the creators name to the server
 function mouseReleased() {
   if (isRecording) {
     document.querySelector("button").classList.remove('button--active');
-    soundRec.stop(); // stop recording
-    let soundBlob = soundFile.getBlob(); //get the recorded soundFile's blob & store it in a variable
 
-    let formdata = new FormData(); //create a from to of data to upload to the server
-    formdata.append('soundBlob', soundBlob, time + '.wav'); // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
+    soundRec.stop(); // Stop recording
+    let soundBlob = soundFile.getBlob(); // Get the recorded soundFile's blob & store it in a variable
+
+    let formdata = new FormData(); // Create a form to upload to data the server
+    formdata.append('soundBlob', soundBlob, time + '.wav'); // Append the sound blob and the name of the file (will show up on the server as req.file.originalname)
 
     //build a HTTP POST request
     var httpRequestOptions = {
       method: 'POST',
-      body: formdata, // with our form data packaged above
+      body: formdata,
       headers: new Headers({
         'enctype': 'multipart/form-data' // the enctype is important to work with multer on the server
       })
     };
 
-    // Now we can send the blob to a server...
+    // Now we can send the blob to the server
     var serverUrl = '/upload'; //we've made a POST endpoint on the server at /upload
 
     // use p5 to make the POST request at our URL and with our options
     httpDo(
       serverUrl,
       httpRequestOptions,
-      (successStatusCode) => { //if we were successful...
+      (successStatusCode) => {
         console.log("uploaded recording successfully: " + successStatusCode)
       },
       (error) => {
@@ -84,40 +103,29 @@ function mouseReleased() {
       }
     )
 
-    //let formdataName = new FormData(); //create a from to of data to upload to the server
-    //formdataName.append('input', input.value()); // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
+    // Prepare a second POST for the creators name
     var serverUrl = '/name';
-
-    let postData = {
-      name: input.value()
+    var postData = {
+      name: input.value() // Get the input from the html form
     };
 
-/*
-    var httpRequestOptionsName = {
-      method: 'POST',
-      body: formdataName, // with our form data packaged above
-      headers: new Headers({
-        'enctype': 'multipart/form-data' // the enctype is important to work with multer on the server
-      })
-    };
-    */
-    console.log("asds");
-    httpPost(serverUrl, 'json', postData, function(result) {
-      console.log("Name gesendet");
-    });
-
+    // use p5 to make the POST request at our URL and with our options
+    httpPost(
+      serverUrl,
+      'json',
+      postData,
+      function(result) {
+        console.log("Sent name successfully");
+      }
+    );
 
     isRecording = false;
     console.log('recording stopped');
-
   }
-
 
 }
 
-//close setup()
-
-
+// Get the time in the desired format
 function getTime() {
   var str = "";
 

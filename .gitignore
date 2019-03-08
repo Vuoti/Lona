@@ -1,0 +1,2 @@
+# Ignore the node modules (4,51GB)
+node_modules/

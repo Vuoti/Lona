@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js" lang="de">
+  <head>
+    <script src="p5.js"></script>
+    <script src="p5.sound.js"></script>
+    <script src="p5.dom.js"></script>
+    <link rel='stylesheet' href='./font-awesome.min.css'>
+
+    <style>
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
+        background: #d3d3d3;
+        font-size: 10px;
+      }
+      input{
+        color: #7f7f7f;
+        text-align: center;
+        font-size: 35px;
+        background-color: rgba(0,0,0,0);
+        border: white 2px solid;
+        height: 140px;
+        border-radius: 80px;
+        z-index: -5;
+      }
+
+      .button {
+        transition: background .4s ease-in-out, color .4s ease-in-out;
+        position: relative;
+        display: inline-block;
+        width: 16rem;
+        height: 16rem;
+        margin: 0 1rem;
+        padding: 0;
+        background: #ffffff;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 4rem;
+        cursor: pointer;
+      }
+      button {
+        transition: background .4s ease-in-out, color .4s ease-in-out;
+        position: relative;
+        display: inline-block;
+        width: 16rem;
+        height: 16rem;
+        margin: 0 1rem;
+        padding: 0;
+        background: #ffffff;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 4rem;
+        cursor: pointer;
+      }
+
+      .button--record::before {
+        animation: spin 4s linear infinite;
+        transition: opacity .4s ease-in-out;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 16rem;
+        height: 16rem;
+        margin: -.4rem;
+        padding: -.4rem;
+        background: transparent;
+        opacity: 0;
+        border-radius: 50%;
+        border: 0.4rem solid rgba(255, 255, 255, 0.8);
+        border-top-color: rgba(46, 116, 143, 0);
+      }
+
+      .button--record.button--active {
+        background: #ED6A5F;
+        color: #ffffff;
+      }
+
+      .button--record.button--active::before {
+        opacity: 1;
+      }
+
+      .button--disabled {
+        opacity: .2;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+    </style>
+
+  </head>
+  <body>
+    
+    <script src="saveAudioButton.js"></script>
+
+  </body>
+</html>

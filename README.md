@@ -119,6 +119,7 @@ Unbedingt https benutzten da manche Browser nur so Mikrofonaufzeichnungen zulass
 Die Url wechselt bei jedem Neustart und verfällt nach 8 Stunden.
 
 Um die Eingabe der Url zu erleichtern kann sie als QR-Code ausgedruckt werden
+
 ``` python printer/urlPrintoutGenerator.py ```
 
 Die Sprachnachrichten werden unter "public/uploads" in einem Ordner mit dem aktuellen Datum gespeichert und beinhalten die Uhrzeit im Dateinamen. Mit den empfangenen Daten wird ein Ausdruck generiert, der einen Code128 Strichcode beinhaltet. Im Prototypen wird vereinfacht die Uhrzeit (=Dateiname) als Erkennungsmerkmal kodiert.
@@ -128,10 +129,12 @@ Der automatisch ausgedruckte Zettel kann nun eingescannt werden, dafür muss der
 
 ### Manuelle Ausdrucke
 Ausdrucke, z.B. zur Demonstration der morgendlichen Botschaften können mit folgendem Befehl gemacht werden:
+
 ``` lpr -o orientation-requested=3 -o fit-to-page PFAD_ZUM_BILD```
 
 ### Barcodescan mit Bildoutput (OpenCV erforderlich)
 Zu Debugging-Zwecken kann es nützlich sein zu sehen ab wann ein Barcode erkannt wird:
+
 ``` python3 scanner/barcodeScannerVideoStream_VideoOutput.py```
 
 

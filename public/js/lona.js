@@ -10,11 +10,13 @@
 //
 // ****************************************************************************
 // To-Do:
-// - There is a bug with the http-posts, sometimes they get send multiple times
-// - Validation of the input form is broken (allow only characters A-Z, a-z)
 // - The check if the recording button is pressed is not precise
 // - Website is not responsive (Elements are on top of each other on desktop)
 // - Add profile picture upload
+
+// Those are the POST endpoints on the server
+var serverEndpointSoundfile = '/upload';
+var serverEndpointName = '/name';
 
 let button, mic, soundRec, soundFile, time, input;
 var isRecording = false;
@@ -79,7 +81,7 @@ function mouseReleased() {
     let formdata = new FormData(); // Create a form to upload to data the server
     formdata.append('soundBlob', soundBlob, time + '.wav'); // Append the sound blob and the name of the file (will show up on the server as req.file.originalname)
 
-    //build a HTTP POST request
+    // build a HTTP POST request with the soundfile
     var httpRequestOptions = {
       method: 'POST',
       body: formdata,
@@ -88,12 +90,9 @@ function mouseReleased() {
       })
     };
 
-    // Now we can send the blob to the server
-    var serverUrl = '/upload'; //we've made a POST endpoint on the server at /upload
-
-    // use p5 to make the POST request at our URL and with our options
+    // Now we can send the blob to the server, by making a POST request
     httpDo(
-      serverUrl,
+      serverEndpointSoundfile,
       httpRequestOptions,
       (successStatusCode) => {
         console.log("uploaded recording successfully: " + successStatusCode)
@@ -104,18 +103,16 @@ function mouseReleased() {
     )
 
     // Prepare a second POST for the creators name
-    var serverUrl = '/name';
     var postData = {
-      name: input.value() // Get the input from the html form
+      name: input.value() // Get the input from the HTML form
     };
 
-    // use p5 to make the POST request at our URL and with our options
+    // use p5 to make the POST request at our URL
     httpPost(
-      serverUrl,
-      'json',
+      serverEndpointName,
       postData,
       function(result) {
-        console.log("Sent name successfully");
+        console.log("Sent name successfully: " + result);
       }
     );
 

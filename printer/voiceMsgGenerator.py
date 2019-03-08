@@ -33,7 +33,7 @@ ap.add_argument('-n', '--name', required=True,
 barcode = ap.parse_args().barcode
 date = ap.parse_args().date
 length = ap.parse_args().length
-name = ap.parse_args().name
+name = ap.parse_args().name.decode('utf-8')
 filePath = 'public/uploads/' + date[6:8] + date[3:5] + date[0:2] + '/' + barcode + '.jpg'
 
 # Create the Canvas
@@ -79,9 +79,9 @@ image.rotate(180).save(filePath)
 printer.upsideDownOn()
 printer.justify('C')
 printer.setBarcodeHeight(100)
-#printer.printBarcode(barcode, printer.CODE128)
-#printer.feed(3)
+printer.printBarcode(barcode, printer.CODE128)
+printer.feed(3)
 
 # Load the generated image and print it
-#printer.printImage(Image.open(filePath), True)
-#printer.feed(6)
+printer.printImage(Image.open(filePath), True)
+printer.feed(6)

@@ -7,7 +7,7 @@ Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botsc
 ## Funktionsumfang des Prototypen
 Über eine Webseite können im Browser Sprachnachrichten von externen Geräten (zum Beispiel dem eigenen Smartphone) aufgenommen werden. Die Soundfiles werden auf dem Prototypen gespeichert und eine entsprechende Nachricht mit dem Namen des Senders, dem Datum, der Uhrzeit, sowie der Länge der Nachricht ausgedruckt. Der Ausdruck beinhaltet zudem einen Strichcode der, nach betätigen des Drucktasters, mit der angeschlossenen Kamera ausgelesen werden kann. Wurde der Strichcode erkannt wird die entsprechende Sprachnachricht wiedergegeben.
 
-[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/322329726)
+[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/322329726?autoplay=1&autopause=0)
 
 ## Aufbau
 Der Prototyp setzt sich aus den folgenden Komponenten zusammen
@@ -147,8 +147,7 @@ python3 scanner/barcodeScannerVideoStream_VideoOutput.py
 * Automatisiertes Starten der Programme beim hochfahren
 * Das Frontend zum Aufnehmen der Sprachnachrichten überarbeiten
 	* Responsives Layout
-	* Input Validierung (keine Sonderzeichen)
 	* Upload eigener Foto
 * LED's ohne PWM Steuerung einbauen
-* Barcode Scanner umstrukturieren (Logik in scannerMain.py)
-* Die Barcodes sollten das neben der Uhrzeit auch das Datum enthalten
+* barcodeScannerVideoStream.py umstrukturieren (Nur Barcode Scan, darauf folgende Abläufe sollten in scannerMain.py)
+* Die Barcodes sollten neben der Uhrzeit auch das Datum enthalten

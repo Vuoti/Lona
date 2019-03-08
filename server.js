@@ -26,9 +26,10 @@ app.use(bodyParser.json());
 
 // Get the voice message creators name
 app.post('/name', function (req, res, next) {
-  name =  req.body.name;
-  console.log("New voicemsg");
-  console.log("\n" + name);
+  name = '"' + req.body.name + '"';
+  res.sendStatus(200); //send back that everything went ok
+  console.log("\nNew voicemsg");
+  console.log(name);
 })
 
 // Save the recieved voice message to the "public/uploads" folder
@@ -98,7 +99,7 @@ function getDateFormated(mode)   {
         month = '0' + month;
     }
 
-    if(mode == 'short'){ // short mode is used for creating the upload directory 
+    if(mode == 'short'){ // short mode is used for creating the upload directory
       str = year + month + day;
     }else{
       str += "'" + day + "." + month + "." + year + " | " + hours + ":" + minutes + "'";

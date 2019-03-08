@@ -1,4 +1,4 @@
-# ![Lona](public/img/lona.png "Lona Logo")
+# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Lona](public/img/lona.png "Lona Logo")
 *Ein Bachelorprojekt von André Fritzinger und Jeannine Krämer im WS18/19.*
 *Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.*
 

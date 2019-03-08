@@ -7,7 +7,7 @@ Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botsc
 ## Funktionsumfang des Prototypen
 Über eine Webseite können im Browser Sprachnachrichten von externen Geräten (zum Beispiel dem eigenen Smartphone) aufgenommen werden. Die Soundfiles werden auf dem Prototypen gespeichert und eine entsprechende Nachricht mit dem Namen des Senders, dem Datum, der Uhrzeit, sowie der Länge der Nachricht ausgedruckt. Der Ausdruck beinhaltet zudem einen Strichcode der, nach betätigen des Drucktasters, mit der angeschlossenen Kamera ausgelesen werden kann. Wurde der Strichcode erkannt wird die entsprechende Sprachnachricht wiedergegeben.
 
-[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/322329726s)
+[![Lona Prototyp Demonstration"](public/img/demo.gif "Lona Prototyp Demonstration")](https://vimeo.com/322329726)
 
 ## Aufbau
 Der Prototyp setzt sich aus den folgenden Komponenten zusammen

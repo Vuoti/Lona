@@ -1,5 +1,7 @@
 # Lona
-Bachelorarbeit WS18/19 - Lona Prototyp
+*Ein Bachelorprojekt von André Fritzinger und Jeannine Krämer im WS18/19.
+Betreut durch Prof. Andrea Krajewski, Garrit Schaap und Andreas Schindler.***
+
 ![alt text](public/img/lona.png "Lona Logo")
 
 Lona ist ein System das Menschen im Alter durch regelmäßige aktivierende Botschaften helfen soll wieder stärker am gesellschaftlichen Leben teilzunehmen. Seine Aufgabe ist es, Menschen die sich einsam fühlen, einen Weg aus der sozialen Isolation und Antriebslosigkeit zu zeigen. Zudem wird das Pflegen bestehender Beziehungen, u.a. durch Sprachnachrichten erleichtert.
@@ -13,7 +15,7 @@ Der Prototyp setzt sich aus den folgenden Komponenten zusammen
 * [Thermodrucker](https://www.adafruit.com/product/2751)
 * [Kondensator (4700uF)](https://www.amazon.de/Fixapart-ELECTR-Capac-4700uF-105-%C2%B0-braun/dp/B00GY21CKK/)
 * [PiCamera Rev 1.3](https://www.amazon.de/KEYESTUDIO-Raspberry-Camera-Module-OV5647/dp/B073RCXGQS/)
-* LED Strip (! Neopixel funktioniern nicht)
+* LED Strip (! Neopixel funktionieren nicht)
 * Externer Lautsprecher mit Klinkenstecker
 * Drucktaster
 * Netzteil 5V 2A (2x)
@@ -101,26 +103,37 @@ sudo make install && sudo ldconfig
 ### 1. Über ssh mit dem Pi verbinden
 Login: ```pi``` ```raspberry```
 
-### 2. Ins "Lona" Directory wechseln
+### 2. Den Lona Prototypen starten
 ``` cd ~/Lona ```
+```
+node server.js
+python scanner/scannerMain.py
+ngrok/nrgok http 3000
+```
 
-### 3. Den Server starten
-``` node server.js ```
+### 3. Die Webseite aufrufen und eine Sprachnachricht aufnehmen
+Bestenfalls mit einem Smartphone (getestet mit iPhone 6) die Nrok-Url aufrufen, den Namen eingeben und eine Sprachnachricht aufnehmen.
 
-### 4. Den Scanner starten
-``` python scanner/scannerMain.py ```
+⚠
+Unbedingt https benutzten da manche Browser nur so Mikrofonaufzeichnungen zulassen.
+Die Url wechselt bei jedem Neustart und verfällt nach 8 Stunden.
 
-### 5. Ngrok starten
-``` ngrok/nrgok http 3000 ```
-
-### 6. Ngrok Url ausdrucken
+Um die Eingabe der Url zu erleichtern kann sie als QR-Code ausgedruckt werden
 ``` python printer/urlPrintoutGenerator.py ```
 
+Die Sprachnachrichten werden unter "public/uploads" in einem Ordner mit dem aktuellen Datum gespeichert und beinhalten die Uhrzeit im Dateinamen. Mit den empfangenen Daten wird ein Ausdruck generiert, der einen Code128 Strichcode beinhaltet. Im Prototypen wird vereinfacht die Uhrzeit (=Dateiname) als Erkennungsmerkmal kodiert.
+
+### 4. Den Ausdruck scannen
+Der automatisch ausgedruckte Zettel kann nun eingescannt werden, dafür muss der Drucktaster betätigt werden (passiert beim einstecken des Rahmens in das Lona-Telefon). Der Barcode wird eingelesen und die Sprachdatei mit der entsprechenden Uhrzeit (=Barcode.Data) wiedergegeben.
+
 ### Manuelle Ausdrucke
-``` lpr -o orientation-requested=3 -o fit-to-page PFAD ```
+Ausdrucke, z.B. zur Demonstration der morgendlichen Botschaften können mit folgendem Befehl gemacht werden:
+``` lpr -o orientation-requested=3 -o fit-to-page PFAD_ZUM_BILD```
 
 ### Barcodescan mit Bildoutput (OpenCV erforderlich)
-``` python3 scanner/barcodeScannerVideoStream_VideoOutput.py ```
+Zu Debugging-Zwecken kann es nützlich sein zu sehen ab wann ein Barcode erkannt wird:
+``` python3 scanner/barcodeScannerVideoStream_VideoOutput.py```
+
 
 
 ## To-Do

@@ -42,6 +42,7 @@ app.post('/upload', upload.single('soundBlob'), function (req, res, next) {
   res.sendStatus(200); //send back that everything went ok
 
   barcodeData = req.file.originalname.replace('.wav',''); // get the filename to pass it later as the barcode data
+  console.log(barcodeData);
   date = getDateFormated();
 
   // Get the voice message duration

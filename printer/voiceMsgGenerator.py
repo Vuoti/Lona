@@ -36,6 +36,12 @@ length = ap.parse_args().length
 name = ap.parse_args().name.decode('utf-8')
 filePath = 'public/uploads/' + date[6:8] + date[3:5] + date[0:2] + '/' + barcode + '.jpg'
 
+# Easter eggs
+if(name == 'Nyancat'):
+	barcode = 'NYANCAT'
+elif(name == 'Geburtstag'):
+	barcode = 'BDAYOPA'
+
 # Create the Canvas
 image = Image.new('RGB', (384,446))
 draw = ImageDraw.Draw(image)

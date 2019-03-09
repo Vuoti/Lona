@@ -150,4 +150,3 @@ python3 scanner/barcodeScannerVideoStream_VideoOutput.py
 	* Upload eigener Foto
 * LED's ohne PWM Steuerung einbauen
 * barcodeScannerVideoStream.py umstrukturieren (Nur Barcode Scan, darauf folgende Abläufe sollten in scannerMain.py)
-* Die Barcodes sollten neben der Uhrzeit auch das Datum enthalten

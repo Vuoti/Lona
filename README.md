@@ -145,7 +145,9 @@ python3 scanner/barcodeScannerVideoStream_VideoOutput.py
 
 ## To-Do
 * Automatisiertes Starten der Programme beim hochfahren
+* Die Sprachaufzeichnungen klingen verzerrt unter Android Chrome
 * Das Frontend zum Aufnehmen der Sprachnachrichten überarbeiten
+	* Input Validation (Keine Sonderzeichen erlauben)
 	* Responsives Layout
 	* Upload eigener Foto
 * LED's ohne PWM Steuerung einbauen

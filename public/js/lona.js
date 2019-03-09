@@ -10,6 +10,8 @@
 //
 // ****************************************************************************
 // To-Do:
+// - Microphone input in Android Chrome is distorted
+// - Fix Input validation (A-Za-z)
 // - The check if the recording button is pressed is not precise
 // - Website is not responsive (Elements are on top of each other on desktop)
 // - Add profile picture upload

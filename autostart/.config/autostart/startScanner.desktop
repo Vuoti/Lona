@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Scanner-Autostart-Script
+Type=Application
+Exec=bash startScanner.sh
+Terminal=true

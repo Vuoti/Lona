@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Ngrok-Autostart
+Type=Application
+Exec=bash startNgrok.sh
+Terminal=true

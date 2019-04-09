@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Autostart-Script-Server
+Comment=Kommentar
+Type=Application
+Exec=bash startServer.sh
+Terminal=true

@@ -20,6 +20,7 @@ GPIO.setmode(GPIO.BCM) # Use Broadcom pin numbers (not Raspberry Pi pin numbers)
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Enable button with pull-up
 GPIO.setwarnings(False)
 FNULL = open(os.devnull, 'w') # Redirect the terminal output because omxplayer has no --silent mode
+button_state = False
 
 print("Waiting for Frame to be inserted")
 
@@ -27,7 +28,7 @@ print("Waiting for Frame to be inserted")
 def tap():
   print ("\nFrame inserted")
   #subprocess.Popen(['sudo', 'python', 'ledOn.py']) # PMW conflict with audio, LED is currently not supported
-  subprocess.Popen(['omxplayer', '-o', 'local', 'scanner/soundFx/insert.mp3'], stdout=FNULL, stderr=subprocess.STDOUT)
+  subprocess.call(['omxplayer', '-o', 'local', 'scanner/soundFx/insert.mp3'], stdout=FNULL, stderr=subprocess.STDOUT)
   subprocess.call(['sudo', 'python3', 'scanner/barcodeScannerVideoStream.py'])
 
 # Main loop

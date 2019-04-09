@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=PrintOut-Autostart-Script
+Type=Application
+Exec=bash printUrl.sh
+Terminal=true
